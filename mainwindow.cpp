@@ -3,7 +3,6 @@
 #include <QFileDialog>
 #include <QProcess>
 
-//TODO: Add better error handling (Show a message to the user that something went wrong)
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
