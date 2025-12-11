@@ -26,21 +26,24 @@ MainWindow::MainWindow(QWidget *parent)
         }
     });
 
+    //TODO: Find a better way to handle the python script. 
     connect(ui->extractBtn, &QPushButton::clicked, this, [this](){
         QProcess process;
         QStringList args;
         args << "extract.py" << "--input" << input << "--output" << output;
         process.start("python3", args);
 
-        if (!process.waitForFinished()) {
-            qDebug() << "Process timed out or failed to start!";
-            return;
-        }
-
         QString stdoutOutput = process.readAllStandardOutput();
         QString stderrOutput = process.readAllStandardError();
-
         int exitCode = process.exitCode();
+
+        if (!process.waitForFinished()) {
+            qDebug() << "Process timed out or failed to start!";
+            qDebug() << "Exit code:" << exitCode;
+            qDebug() << "STDOUT:" << stdoutOutput;
+            qDebug() << "STDERR:" << stderrOutput;
+            return;
+        }
 
         qDebug() << "Exit code:" << exitCode;
         qDebug() << "STDOUT:" << stdoutOutput;
