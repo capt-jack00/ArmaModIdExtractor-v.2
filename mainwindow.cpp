@@ -6,6 +6,7 @@
 
 //TODO: Improve GUI
 //TODO: Build the project to AppImage
+//TODO: Make the window non-reszable
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -18,6 +19,9 @@ MainWindow::MainWindow(QWidget *parent)
             input = modpckName;
             ui->mdpckPath->setText(modpckName);
         }
+        else{
+            QMessageBox::critical(this, "Modpack file error!", "Please choose the modpack file!");
+        }
     });
 
     connect(ui->outbtn, &QPushButton::clicked, this, [this](){
@@ -25,6 +29,9 @@ MainWindow::MainWindow(QWidget *parent)
         if(!outfileName.isEmpty()){
             output = outfileName;
             ui->outPath->setText(outfileName);
+        }
+        else{
+            QMessageBox::critical(this, "Output file error!", "Please choose the output file!");
         }
     });
 
@@ -52,8 +59,14 @@ MainWindow::MainWindow(QWidget *parent)
         qDebug() << "STDERR:" << stderrOutput;
 
         if (exitCode == 0) {
-            qDebug() << "Script ran successfully!";
-            QMessageBox::information(this, "Success!", "Successfully exported mod ID's!");
+            if(input.isEmpty() || output.isEmpty()){
+                qDebug() << "Missing I/O files!";
+                QMessageBox::critical(this, "I/O files error!", "The input and output files are requried!");
+            }
+            else{
+                qDebug() << "Script ran successfully!";
+                QMessageBox::information(this, "Success!", "Successfully exported mod ID's!");
+            }
         } else {
             qDebug() << "Script failed!";
             QMessageBox::critical(this, "Error!", stderrOutput);
