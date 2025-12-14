@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>592</width>
-    <height>357</height>
+    <height>280</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,10 +20,16 @@
       <x>0</x>
       <y>9</y>
       <width>591</width>
-      <height>211</height>
+      <height>224</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <property name="rightMargin">
+      <number>10</number>
+     </property>
      <item>
       <widget class="QPushButton" name="mdpckbtn">
        <property name="text">
@@ -59,20 +65,28 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QCheckBox" name="addComaCbx">
+       <property name="text">
+        <string>Add comma between ID's</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="oneLineCbx">
+       <property name="text">
+        <string>Save all ID's in one line</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>App made by capt-jack00 on Github using Qt6 and Python.</string>
+       </property>
+      </widget>
+     </item>
     </layout>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>260</y>
-      <width>491</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>App made by capt-jack00 on Github using Qt6 and Python.</string>
-    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -81,7 +95,7 @@
      <x>0</x>
      <y>0</y>
      <width>592</width>
-     <height>30</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>
