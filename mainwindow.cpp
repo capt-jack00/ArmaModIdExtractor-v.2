@@ -53,7 +53,6 @@ MainWindow::MainWindow(QWidget *parent)
             return;
         }
 
-        //FIXME: When output/input or both files aren't provided the qDebug tells that everything went well.
         qDebug() << "Exit code:" << exitCode;
         qDebug() << "STDOUT:" << stdoutOutput;
         qDebug() << "STDERR:" << stderrOutput;
